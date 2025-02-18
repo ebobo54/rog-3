@@ -19,4 +19,4 @@ for num in range(1, 11):
     print(f"n={num}: Iterative={iter_result:.6f}, Recursive={rec_result:.6f}")
 
 ```
-!(Q.png)
+![](Q.png)
