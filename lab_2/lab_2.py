@@ -1,6 +1,6 @@
 # # Python3 code to find the nth term of the
 # # Baum Sweet Sequence
-# def nthBaumSweetSeq(n):
+# def baumSweet(n):
 
 # 	# bitset stores bitwise representation
 # 	bs = list(bin(n)[2::])
@@ -32,10 +32,14 @@
 # 	return baum
 
 # # Driver Code
-# n = 7
-# print(nthBaumSweetSeq(n))
 
-def baum_sweet(n: int) -> int:
+# print(baumSweet(17))
+# print(baumSweet(4))
+# print(baumSweet(10))
+# print(baumSweet(9))
+# print(baumSweet(54))
+
+def baumSweet(n: int) -> int:
     binary = bin(n)[2:]
     zero_blocks = binary.split('1')
     
@@ -44,15 +48,8 @@ def baum_sweet(n: int) -> int:
             return 0
     return 1
 
-print(baum_sweet(17))
-print(baum_sweet(4))
-print(baum_sweet(10))
-print(baum_sweet(1))
-print(baum_sweet(2))
-print(baum_sweet(3))
-print(baum_sweet(5))
-print(baum_sweet(6))
-print(baum_sweet(7))
-print(baum_sweet(8))
-print(baum_sweet(9))
-print(baum_sweet(54))
+print(baumSweet(17))
+print(baumSweet(4))
+print(baumSweet(10))
+print(baumSweet(9))
+print(baumSweet(54))
