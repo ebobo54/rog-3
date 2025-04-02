@@ -48,8 +48,9 @@ def baumSweet(n: int) -> int:
             return 0
     return 1
 
-print(baumSweet(17))
-print(baumSweet(4))
-print(baumSweet(10))
-print(baumSweet(9))
-print(baumSweet(54))
+# print(baumSweet(17))
+# print(baumSweet(4))
+# print(baumSweet(10))
+# print(baumSweet(9))
+# print(baumSweet(54))
+print(bin(17))
