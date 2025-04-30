@@ -18,22 +18,19 @@ def partition(participants, low, high):
         high -= 1
 
 def compare(a, b):
-    if a[1] != b[1]:  # по убыванию решённых задач
+    if a[1] != b[1]:
         return -1 if a[1] > b[1] else 1
-    if a[2] != b[2]:  # по возрастанию штрафа
+    if a[2] != b[2]:
         return -1 if a[2] < b[2] else 1
     return -1 if a[0] < b[0] else (1 if a[0] > b[0] else 0)
 
-# Чтение входных данных
 n = int(input())
 participants = []
 for _ in range(n):
     name, p, f = input().split()
     participants.append((name, int(p), int(f)))
 
-# Сортировка
 quick_sort(participants, 0, len(participants) - 1)
 
-# Вывод
 for p in participants:
     print(p[0])
