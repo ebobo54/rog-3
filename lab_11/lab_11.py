@@ -1,13 +1,12 @@
 def broken_search(nums, target) -> int:
-    left = 0
-    right = len(nums) - 1
-
+    left, right = 0, len(nums) - 1
+    
     while left <= right:
         mid = (left + right) // 2
-
+        
         if nums[mid] == target:
             return mid
-
+        
         if nums[left] <= nums[mid]:
             if nums[left] <= target < nums[mid]:
                 right = mid - 1
@@ -18,12 +17,11 @@ def broken_search(nums, target) -> int:
                 left = mid + 1
             else:
                 right = mid - 1
-
+    
     return -1
-def test():
-    arr = [19, 21, 100, 101, 1, 4, 5, 7, 12]
-    assert broken_search(arr, 5) == 6
-    assert broken_search(arr, 19) == 0
-    assert broken_search(arr, 12) == 8
-    assert broken_search(arr, 42) == -1
-    print("Все тесты пройдены!")
+
+if __name__ == '__main__':
+    n, k = map(int, input().split())  
+    arr = list(map(int, input().split()))
+
+    print(broken_search(arr, k))

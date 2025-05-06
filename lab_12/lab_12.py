@@ -1,25 +1,24 @@
 from collections import defaultdict
 
-def find_anagrams(strings):
-    anagram_groups = defaultdict(list)
-
-    for idx, word in enumerate(strings):
-        key = ''.join(sorted(word))
-        anagram_groups[key].append(idx + 1)
-
-    sorted_groups = sorted(anagram_groups.values(), key=lambda x: x[0])
-
-    for group in sorted_groups:
-        group.sort()
-
-    return sorted_groups
+def find_anagrams():
+    n = int(input())
+    strings = input().split()
 
 
-def test():
-    n = 6
-    strings = ["silent", "listen", "banana", "abc", "cab", "bac"]
-    result = find_anagrams(strings)
+    anagrams = defaultdict(list)
+
+
+    for idx, s in enumerate(strings):
+        sorted_s = ''.join(sorted(s))  
+        anagrams[sorted_s].append(idx)  
+
+    result = []
+    for group in anagrams.values():
+        result.append(" ".join(map(str, sorted(group))))  
+
+    result.sort(key=lambda x: int(x.split()[0]))
     for group in result:
-        print(' '.join(map(str, group)))
+        print(group)
 
-
+if __name__ == '__main__':
+    find_anagrams()

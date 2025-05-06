@@ -1,38 +1,49 @@
 def merge(arr, lf, mid, rg):
-    result = []
-    i = lf
-    j = mid
-    while i < mid and j < rg:
-        if arr[i] <= arr[j]:
-            result.append(arr[i])
+    left = arr[lf:mid]
+    right = arr[mid:rg]
+    
+    i = j = 0
+    k = lf
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            arr[k] = left[i]
             i += 1
         else:
-            result.append(arr[j])
+            arr[k] = right[j]
             j += 1
-    result.extend(arr[i:mid])
-    result.extend(arr[j:rg])
-    for k in range(len(result)):
-        arr[lf + k] = result[k]
-    return result
+        k += 1
+    
+    while i < len(left):
+        arr[k] = left[i]
+        i += 1
+        k += 1
+    
+    while j < len(right):
+        arr[k] = right[j]
+        j += 1
+        k += 1
 
 def merge_sort(arr, lf, rg):
-    if rg - lf <= 1:
-        return
-    mid = (lf + rg) // 2
-    merge_sort(arr, lf, mid)
-    merge_sort(arr, mid, rg)
-    merge(arr, lf, mid, rg)
+    if rg - lf > 1:
+        mid = (lf + rg) // 2
+        
+        merge_sort(arr, lf, mid)
+        merge_sort(arr, mid, rg)
+        
+        merge(arr, lf, mid, rg)
 
 def test():
     a = [1, 4, 9, 2, 10, 11]
-    b = merge(a[:], 0, 3, 6)
+    merge(a, 0, 3, 6) 
     expected = [1, 2, 4, 9, 10, 11]
-    assert b == expected, f"Expected {expected}, got {b}"
+    assert a == expected, f"Expected {expected}, but got {a}"
 
     c = [1, 4, 2, 10, 1, 2]
     merge_sort(c, 0, 6)
     expected = [1, 1, 2, 2, 4, 10]
-    assert c == expected, f"Expected {expected}, got {c}"
+    assert c == expected, f"Expected {expected}, but got {c}"
 
 if __name__ == '__main__':
     test()
+    print("Tests passed successfully!")
